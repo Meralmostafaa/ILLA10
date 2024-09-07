@@ -10,6 +10,23 @@ def chatbot_response(question):
     answer = generate_response(question, relevant_chunks)
     return answer 
 
+@app.route('/chatbot', methods=['POST']) 
+def chatbot():
+    try:
+        data = request.json
+        question = data.get("question")
+        
+        if not question:
+            return jsonify({"error": "No question provided."}), 400
+
+        # Generate chatbot response
+        answer = chatbot_response(question)
+        
+        return jsonify({"answer": answer})
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 @app.route('/message_received', methods=['POST'])
 def message_received():
     try:
