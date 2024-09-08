@@ -52,7 +52,7 @@ def message_received():
 def send_response_to_crisp(conversation_id, response_text):
     url = f"https://api.crisp.chat/v1.0/conversations/{conversation_id}/messages"
     headers = {
-        "Authorization": "716fc7b9-928d-401d-a096-10dcabffcd19",
+        "Authorization": "Bearer 35b3e1bea75c113657d4e2e36a438d5be7e5c0cb4440d8ad06d655c2edd0877b",
         "Content-Type": "application/json"
     }
     payload = {
