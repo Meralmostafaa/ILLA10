@@ -44,7 +44,7 @@ def message_received():
         # Send the response back to Crisp
         #send_response_to_crisp(conversation_id, response_text)
         
-        return jsonify({"status": "success", "message":data})
+        return jsonify({"status": "success", "content":content}), 200
     
     except Exception as e:
         return jsonify({"error": str(e)}), 500
