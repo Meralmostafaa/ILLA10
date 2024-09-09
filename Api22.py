@@ -39,12 +39,12 @@ def message_received():
             return jsonify({"error": "Missing message or conversation ID."}), 400
 
         # Process the message and generate a response
-        response_text = chatbot_response(message_text)
+        #response_text = chatbot_response(message_text)
         
         # Send the response back to Crisp
-        send_response_to_crisp(conversation_id, response_text)
+        #send_response_to_crisp(conversation_id, response_text)
         
-        return jsonify({"status": "success"})
+        return jsonify({"status": "success", "message":data})
     
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -52,7 +52,7 @@ def message_received():
 def send_response_to_crisp(conversation_id, response_text):
     url = f"https://api.crisp.chat/v1.0/conversations/{conversation_id}/messages"
     headers = {
-        "Authorization": "Bearer 35b3e1bea75c113657d4e2e36a438d5be7e5c0cb4440d8ad06d655c2edd0877b",
+        "Authorization": "NzE2ZmM3YjktOTI4ZC00MDFkLWEwOTYtMTBkY2FiZmZjZDE5OmYxOTczZjljLTlhMzctNDE3ZS05NmU2LWIzMzMwM2I0OGFkZQ==",
         "Content-Type": "application/json"
     }
     payload = {
