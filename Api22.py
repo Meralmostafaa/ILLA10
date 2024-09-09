@@ -32,7 +32,7 @@ def message_received():
     print("this is nessage received")
     try:
         response = request.json
-        content = response.data.content
+        content = response.get("data").get("content")
         #conversation_id = data.get("conversation_id")
         #message_text = data.get("message_text")
         print(f"content is: {content}")
