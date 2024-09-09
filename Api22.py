@@ -35,7 +35,7 @@ def message_received():
         message_id = data.get("message_id")
         conversation_id = data.get("conversation_id")
         message_text = data.get("message_text")
-        
+        print(f"data is: {data}")
         if not message_text or not conversation_id:
             return jsonify({"error": "Missing message or conversation ID."}), 400
 
