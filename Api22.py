@@ -29,6 +29,7 @@ def chatbot():
 
 @app.route('/message_received', methods=['POST'])
 def message_received():
+    print("this is nessage received")
     try:
         data = request.json
         message_id = data.get("message_id")
