@@ -40,6 +40,7 @@ def message_received():
 
         # Process the message and generate a response
         response_text = chatbot_response(content)
+        print(f"response: {response_text}")
         
         # Send the response back to Crisp
         #send_response_to_crisp(conversation_id, response_text)
