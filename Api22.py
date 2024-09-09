@@ -43,22 +43,25 @@ def message_received():
         print(f"response: {response_text}")
         
         # Send the response back to Crisp
-        #send_response_to_crisp(conversation_id, response_text)
+        send_response_to_crisp("", response_text)
         
         return jsonify({"status": "success", "content":content, "our response": response_text}), 200
     
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-def send_response_to_crisp(conversation_id, response_text):
-    url = f"https://api.crisp.chat/v1.0/conversations/{conversation_id}/messages"
+def send_response_to_crisp(session_id, response_text):
+    url = f"https://api.crisp.chat/v1/website/716fc7b9-928d-401d-a096-10dcabffcd19/conversation/session_5e3a3127-9af7-4b11-870c-483ce61dec92/message"
     headers = {
-        "Authorization": "NzE2ZmM3YjktOTI4ZC00MDFkLWEwOTYtMTBkY2FiZmZjZDE5OmYxOTczZjljLTlhMzctNDE3ZS05NmU2LWIzMzMwM2I0OGFkZQ==",
-        "Content-Type": "application/json"
+        "Authorization": "Basic MzBhMmY3ZTctMGM3Zi00MmY2LTlhN2MtMmE2MzY4NjE0YjdlOjk2MzViNDg0NWNiOWY5YTg1NTNhZmRlOWMzNGVjNDY0OGIzN2QwOTNiNDg0NTJlN2MyOTc0YWE5NDg1OGYzNWY=",
+        "Content-Type": "application/json",
+        "X-Crisp-Tier" : "plugin"
     }
     payload = {
-        "type": "text",
-        "content": response_text
+      "type": "text",
+      "from": "operator",
+      "origin": "chat",
+      "content": response_text
     }
     response = requests.post(url, json=payload, headers=headers)
     return response
