@@ -36,11 +36,10 @@ def message_received():
         #conversation_id = data.get("conversation_id")
         #message_text = data.get("message_text")
         print(f"content is: {content}")
-        if not message_text or not conversation_id:
-            return jsonify({"error": "Missing message or conversation ID."}), 400
+       
 
         # Process the message and generate a response
-        response_text = chatbot_response(content)
+        #response_text = chatbot_response(content)
         
         # Send the response back to Crisp
         #send_response_to_crisp(conversation_id, response_text)
