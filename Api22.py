@@ -39,12 +39,12 @@ def message_received():
        
 
         # Process the message and generate a response
-        #response_text = chatbot_response(content)
+        response_text = chatbot_response(content)
         
         # Send the response back to Crisp
         #send_response_to_crisp(conversation_id, response_text)
         
-        return jsonify({"status": "success", "content":content}), 200
+        return jsonify({"status": "success", "content":content, "our response": response_text}), 200
     
     except Exception as e:
         return jsonify({"error": str(e)}), 500
