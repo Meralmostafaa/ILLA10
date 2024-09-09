@@ -31,8 +31,8 @@ def chatbot():
 def message_received():
     print("this is nessage received")
     try:
-        data = request.json
-        content = data.get("content")
+        response = request.json
+        content = response.data.content
         #conversation_id = data.get("conversation_id")
         #message_text = data.get("message_text")
         print(f"content is: {content}")
