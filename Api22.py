@@ -34,6 +34,14 @@ def message_received():
     print("this is nessage received")
     try:
         response = request.json
+
+         event_type = response.get("event")
+
+        if event_type not in ["message:send", "message:received"]:
+            print(f"Ignored event type: {event_type}")
+            return jsonify({"status": "ignored", "message": f"Ignored event type: {event_type}"}), 200
+
+        
         content = response.get("data").get("content")
         session_id = response.get("data").get("session_id")
         #message_text = data.get("message_text")
