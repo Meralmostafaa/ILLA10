@@ -34,7 +34,7 @@ def message_received():
     try:
         response = request.json
         content = response.get("data").get("content")
-        session_id = data.get("data").get("session_id")
+        session_id = response.get("data").get("session_id")
         #message_text = data.get("message_text")
        
         # Process the message and generate a response
