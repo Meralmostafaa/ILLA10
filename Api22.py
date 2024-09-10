@@ -8,7 +8,6 @@ app = Flask(__name__)
 def chatbot_response(question):
     relevant_chunks = query_documents(question)
     answer = generate_response(question, relevant_chunks)
-    print(f"answer is: {answer}")
     return answer 
 
 @app.route('/chatbot', methods=['POST']) 
