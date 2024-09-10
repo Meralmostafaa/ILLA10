@@ -23,6 +23,8 @@ def chatbot():
         # Generate chatbot response
         answer = chatbot_response(question)
         
+        print(f"the answer is {answer}")
+        
         return jsonify({"answer": answer})
     
     except Exception as e:
