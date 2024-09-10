@@ -34,17 +34,15 @@ def message_received():
     try:
         response = request.json
         content = response.get("data").get("content")
-        #conversation_id = data.get("conversation_id")
+        session_id = data.get("data").get("session_id")
         #message_text = data.get("message_text")
-        print(f"content is: {content}")
        
-
         # Process the message and generate a response
         response_text = chatbot_response(content)
-        print(f"response: {response_text}")
+        
         
         # Send the response back to Crisp
-        send_response_to_crisp("", response_text)
+        send_response_to_crisp(session_id, response_text)
         
         return jsonify({"status": "success", "content":content, "our response": response_text}), 200
     
@@ -52,7 +50,7 @@ def message_received():
         return jsonify({"error": str(e)}), 500
 
 def send_response_to_crisp(session_id, response_text):
-    url = f"https://api.crisp.chat/v1/website/716fc7b9-928d-401d-a096-10dcabffcd19/conversation/session_5e3a3127-9af7-4b11-870c-483ce61dec92/message"
+    url = f"https://api.crisp.chat/v1/website/716fc7b9-928d-401d-a096-10dcabffcd19/conversation/{session_id}/message"
     headers = {
         "Authorization": "Basic MzBhMmY3ZTctMGM3Zi00MmY2LTlhN2MtMmE2MzY4NjE0YjdlOjk2MzViNDg0NWNiOWY5YTg1NTNhZmRlOWMzNGVjNDY0OGIzN2QwOTNiNDg0NTJlN2MyOTc0YWE5NDg1OGYzNWY=",
         "Content-Type": "application/json",
