@@ -35,7 +35,7 @@ def message_received():
     try:
         response = request.json
 
-         event_type = response.get("event")
+        event_type = response.get("event")
 
         if event_type not in ["message:send", "message:received"]:
             print(f"Ignored event type: {event_type}")
