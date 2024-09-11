@@ -37,9 +37,10 @@ def message_received():
 
         event_type = response.get("event")
 
-        if event_type not in ["message:send", "message:received"]:
+        if event_type != "message:send":
             print(f"Ignored event type: {event_type}")
             return jsonify({"status": "ignored", "message": f"Ignored event type: {event_type}"}), 200
+
 
         
         content = response.get("data").get("content")
